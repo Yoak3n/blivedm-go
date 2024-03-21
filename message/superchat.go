@@ -12,11 +12,11 @@ import (
 type SuperChat struct {
 	BackgroundBottomColor string  `json:"background_bottom_color"` //底部背景色
 	BackgroundColor       string  `json:"background_color"`        //背景色
-	BackgroundColorEnd    string  `json:"background_color_end"`
-	BackgroundColorStart  string  `json:"background_color_start"`
-	BackgroundIcon        string  `json:"background_icon"`        //背景图标
-	BackgroundImage       string  `json:"background_image"`       //背景图
-	BackgroundPriceColor  string  `json:"background_price_color"` //背景价格颜色
+	BackgroundColorEnd    string  `json:"background_color_end"`    //背景渐变图结束颜色
+	BackgroundColorStart  string  `json:"background_color_start"`  //背景渐变图开始颜色
+	BackgroundIcon        string  `json:"background_icon"`         //背景图标
+	BackgroundImage       string  `json:"background_image"`        //背景图
+	BackgroundPriceColor  string  `json:"background_price_color"`  //背景价格颜色
 	ColorPoint            float64 `json:"color_point"`
 	Dmscore               int     `json:"dmscore"`
 	EndTime               int     `json:"end_time"` //结束时间戳

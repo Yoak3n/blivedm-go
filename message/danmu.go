@@ -15,13 +15,23 @@ const (
 
 type (
 	Danmaku struct {
-		Sender    *User
+		Sender    *Sender
 		Content   string
 		Extra     *Extra
 		Emoticon  *Emoticon
 		Type      int
 		Timestamp int64
 		Raw       string
+	}
+	Sender struct {
+		Uid          int
+		Uname        string
+		Admin        bool
+		Urank        int
+		MobileVerify bool
+		EnterTime    int // 用户进房时间(秒)
+		Medal        *Medal
+		GuardLevel   int
 	}
 
 	Extra struct {
@@ -78,13 +88,14 @@ func (d *Danmaku) Parse(data []byte) {
 	i2 := info.Get("2")
 	i3 := info.Get("3")
 	d.Content = info.Get("1").String()
-	d.Sender = &User{
+	d.Sender = &Sender{
 		Uid:          int(i2.Get("0").Int()),
 		Uname:        i2.Get("1").String(),
 		Admin:        i2.Get("2").Bool(),
 		Urank:        int(i2.Get("5").Int()),
 		MobileVerify: i2.Get("6").Bool(),
 		GuardLevel:   int(info.Get("7").Int()),
+		EnterTime:    int(info.Get("0.5").Int()),
 		Medal: &Medal{
 			Level:    int(i3.Get("0").Int()),
 			Name:     i3.Get("1").String(),
